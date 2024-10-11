@@ -1,0 +1,89 @@
+body {
+  font-family: 'Playfair Display', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #8a7cb9;
+}
+
+header {
+  display: flex;  
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #c9c1e5;  
+  background: rgba(255, 255, 255, 0.5);
+  color: #281e19;  
+}
+
+
+.nav ul {
+  display: flex; 
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.nav ul li {
+  margin-right: 20px; 
+}
+
+.nav a {
+  text-decoration: none; 
+  color: #f364c3; 
+  font-weight: bold;
+}
+
+.nav a:hover {
+  color: #7862f5;
+  text-decoration: underline;
+}
+
+
+.hero {
+  background: url('../public/imagens/capa.jpg') no-repeat center center/cover;
+  color: #fff;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.services {
+  padding: 50px;
+  text-align: center;
+}
+
+
+.service-card {
+  display: inline-block;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #8570a7;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.service-image {
+  width: 100%; 
+  height: auto; 
+  border-radius: 10px; 
+  margin-bottom: 15px; 
+}
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #e0c4df;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
