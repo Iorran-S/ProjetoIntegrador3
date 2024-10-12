@@ -4,37 +4,36 @@ const AboutUs = () => {
   return (
     <section id="about" className="about-us">
       <h2>Sobre Nós</h2>
-      <p>Somos uma clínica de estética dedicada a oferecer tratamentos personalizados com uma equipe altamente qualificada.</p>
-      <img src="equipe.jpg" alt="Equipe da clínica" />
-      
+      <p>
+        Somos a Clínica Estética Martins, um espaço dedicado a cuidar da sua beleza e bem-estar.
+        </p>
+        <p>
+        Nosso compromisso é oferecer tratamentos personalizados que atendam às suas necessidades, sempre com uma equipe altamente qualificada e apaixonada pelo que faz. Aqui, acreditamos que cada cliente é único e merece um atendimento especial, que vai além das expectativas.
+      </p>
+
       <h3>Nossa História</h3>
-      <p>A Clínica Estética Martins foi fundada em [ano] com o objetivo de transformar a vida das pessoas através da beleza e autoestima.</p>
+      <p>
+        Fundada em 2022, a Clínica Estética Martins nasceu com a missão de transformar a vida das pessoas através de tratamentos estéticos de qualidade.
+        <blockquote>
+        Somos referência em nossa região por oferecer um atendimento humanizado e resultados que elevam a autoestima de nossos clientes. Cada passo de nossa trajetória foi marcado por inovação, profissionalismo e o desejo de fazer a diferença na vida de quem confia em nosso trabalho.
+        </blockquote>
+      </p>
 
-      <h3>Nossos Serviços</h3>
-      <ul>
-        <li>Tratamentos Faciais</li>
-        <li>Tratamentos Corporais</li>
-        <li>Depilação a Laser</li>
-        <li>Massagens Relaxantes</li>
-      </ul>
-
-      <h3>O que Nossos Clientes Dizem</h3>
-      <blockquote>
-        <p>"Os tratamentos na Clínica Estética Martins mudaram minha vida! A equipe é incrível!" - Cliente Satisfeito</p>
-      </blockquote>
-
-      <h3>Nossa Equipe</h3>
+      <h3>Quem sou eu</h3>
       <div className="team-members">
-        <div className="member">
-          <img src="membro1.jpg" alt="Membro 1" />
-          <h4>Nome do Membro 1</h4>
-          <p>Especialização: [especialidade]</p>
-        </div>
-        {/* Adicione mais membros conforme necessário */}
+      <div className="member">
+        <img src="imagens/amanda.png" alt="Membro 1" />
       </div>
-
-      <h3>Agende uma Consulta</h3>
-      <p>Entre em contato conosco para agendar uma consulta e conhecer nossos tratamentos personalizados!</p>
+        <div className="member">
+        <h4>Dra. Amanda Martins</h4>
+        <p>Especialização: Enfermagem e Estética Avançada</p>
+        <p>
+        <blockquote>
+          Com mais de 14 anos de experiência, na área de saúde Dra. Maria é referência em tratamentos faciais e rejuvenescimento, trazendo sempre as últimas novidades do mercado para a clínica.
+        </blockquote>
+        </p>
+      </div>
+    </div>
     </section>
   );
 };

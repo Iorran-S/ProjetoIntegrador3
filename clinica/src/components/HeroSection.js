@@ -31,7 +31,7 @@ const HeroSection = () => {
           <img src={images[currentImage]} alt={`Imagem ${currentImage + 1}`} className="card-image" />
         </div>
       </div>
-      <button className="btn-agendar">Agendar Consulta</button>
+      <a className="btn-agendar" href="#contact">Agendar Consulta</a>
     </section>
   );
 };

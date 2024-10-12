@@ -1,5 +1,13 @@
 /*--Global Styles--*/
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+:root {
+  --primary-color: #b68f268c;
+  --secondary-color: #d58b8b;
+  --accent-color: #6e598a8c;
+  --text-color: #755858;
+  --background-light: #fdf3f3;
+  --ms-text-size-adjust: auto;
+}
 
 /*--Button Styles--*/
 .btn-slice {
@@ -44,6 +52,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: #b68f268c;
+  font-size: min(16px, 1.5vw); /* Define que o tamanho da fonte nunca será menor que 16px */
 }
 
 header {
@@ -117,7 +126,7 @@ header {
 }
 
 .hero-content {
-  font-family: 'Georgia', serif;
+  font-family: 'Georgia';
   display: flex; /* Define que será um flex container */
   flex-direction: column; /* Empilha verticalmente */
   align-items: center; /* Centraliza horizontalmente os itens dentro */
@@ -311,8 +320,6 @@ header {
     transform: skewX(15deg);
 }
 
-
-
 /* SVG animations */
 path.one {
     transition: 0.4s;
@@ -419,23 +426,26 @@ button:hover {
 }
 
 .btn-agendar {
-    border: 2px solid #000000;
-    border-radius: 0rem;
-    color: #000000;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.3rem;
-    background-color: #ffffff;
-    text-transform: uppercase;
-    padding: 0.8rem 1.5rem;
-    margin-top: 10px; /* Espaçamento acima do botão */
-    align-self: center; /* Centraliza o botão horizontalmente */
-    transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid #ac6c186c;
+  border-radius: 0rem;
+  color: #e07e0e;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  position: fixed;
+  bottom: 2%; /* Distância de 2% do fundo */
+  right: 2%; /* Distância de 2% da direita */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 3000; /* Mantém o botão acima de outros elementos */
 }
   
-  .btn-slice3:hover {
-    background-color: #000000;
-    color: #ffffff;
+.btn-agendar:hover {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: #e07e0e;
 }
 
 .about-us {
@@ -445,7 +455,7 @@ button:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra mais suave */
 }
 
-.about-us h2 {
+.about-us h2, .about-us h3, .about-us h4 {
   color: #d58b8b; /* Cor rosa mais delicada para o título */
 }
 
@@ -457,18 +467,27 @@ button:hover {
   border-left: 4px solid #d58b8b; /* Alinhado com a cor do título */
 }
 
-.about-us img {
-  max-width: 100%; /* Responsividade da imagem */
-  height: auto; /* Altura automática para manter proporção */
-  border-radius: 8px; /* Bordas arredondadas na imagem */
-  display: block; /* Remove espaço em branco abaixo da imagem */
-  margin: 20px auto; /* Centraliza a imagem */
+.about-us img,
+.member img {
+  transition: transform 0.3s ease-in-out;
 }
 
-.about-us ul {
-  list-style-type: disc; /* Tipo de marcador */
-  padding-left: 20px; /* Espaço à esquerda */
+.about-us img:hover,
+.member img:hover {
+  transform: scale(1.2); /* Aumenta levemente o tamanho ao passar o mouse */
 }
+
+
+.about-us ul {
+  list-style-type: disc;
+  padding-left: 30px; /* Mais espaço à esquerda para os itens da lista */
+  margin-bottom: 20px; /* Espaço abaixo da lista */
+}
+
+.about-us h3 {
+  margin-top: 40px; /* Espaçamento maior para separar as seções */
+}
+
 
 .about-us blockquote {
   border-left: 4px solid #ccc; /* Borda à esquerda do depoimento */
@@ -480,18 +499,199 @@ button:hover {
 
 .team-members {
   display: flex; /* Exibe membros em linha */
-  justify-content: space-around; /* Espaçamento igual entre os membros */
+  justify-content:center; /* Espaçamento igual entre os membros */
   flex-wrap: wrap; /* Permite quebra de linha se necessário */
 }
 
 .member {
-  max-width: 200px; /* Largura máxima dos membros */
+  max-width: 3000px; /* Largura máxima dos membros */
   text-align: center; /* Centraliza o texto dos membros */
   margin: 20px; /* Espaço ao redor de cada membro */
 }
 
 .member img {
-  max-width: 100%; /* Responsividade da imagem do membro */
+  max-width: 50%; /* Responsividade da imagem do membro */
+  align-items: center;
   border-radius: 50%; /* Imagem em forma de círculo */
   margin-bottom: 10px; /* Espaço abaixo da imagem */
+}
+
+.about-us{
+  display: inline-block;
+  background-color: #ffffffc4; /* Cor de fundo suave */
+  color: #fff; /* Cor do texto */
+  padding: 10px 20px;
+  border-radius: 20px; /* Bordas arredondadas para um estilo delicado */
+  text-decoration: none; /* Remove sublinhado */
+  transition: background-color 0.3s ease;
+}
+
+.about-us .schedule-button:hover {
+  background-color: #c06a6a; /* Cor levemente mais escura ao passar o mouse */
+}
+.about-us ul {
+  list-style-type: disc; /* Estilo da lista */
+  padding-left: 20px; /* Espaçamento à esquerda da lista */
+}
+
+.about-us li {
+  font-size: 16px; /* Tamanho da fonte */
+  color: #333; /* Cor do texto */
+  margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+  line-height: 1.5; /* Espaçamento entre linhas */
+}
+
+.about-us li:hover {
+  color: #c06a6a; /* Cor do texto ao passar o mouse */
+  cursor: pointer; /* Muda o cursor para indicar que é interativo */
+}
+
+.testimonials {
+  padding: 40px 20px; /* Espaçamento do contêiner */
+  background-color: #f9f9f9; /* Cor de fundo */
+  text-align: center; /* Centraliza o texto */
+}
+
+.testimonials h3 {
+  margin-bottom: 30px; /* Espaço abaixo do título */
+  font-size: 24px; /* Tamanho da fonte do título */
+  color: #c06a6a; /* Cor do título */
+}
+
+.testimonial-cards {
+  display: flex; /* Alinha os cartões em linha */
+  justify-content: center; /* Centraliza os cartões */
+  gap: 20px; /* Espaço entre os cartões */
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
+
+.testimonial-card {
+  background-color: white; /* Cor de fundo do cartão */
+  border-radius: 10px; /* Bordas arredondadas */
+  padding: 20px; /* Espaçamento interno do cartão */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra do cartão */
+  transition: transform 0.3s; /* Transição suave */
+  width: 300px; /* Largura fixa do cartão */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px); /* Eleva o cartão ao passar o mouse */
+}
+
+blockquote {
+  margin: 0; /* Remove margens */
+}
+
+blockquote p {
+  font-style: italic; /* Estilo de fonte em itálico */
+  color: #333; /* Cor do texto */
+}
+
+blockquote footer {
+  margin-top: 10px; /* Espaço acima do footer */
+  font-weight: bold; /* Negrito para o nome do cliente */
+  color: #777; /* Cor do texto do footer */
+}
+
+.agendamento {
+  margin-top: 30px; /* Espaço acima da seção de agendamento */
+  padding: 20px; /* Espaçamento interno */
+  background-color: #e9e9e9; /* Cor de fundo do agendamento */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+
+.contact {
+  padding: 40px 20px; /* Espaçamento do contêiner */
+  background-color: #f9f9f9; /* Cor de fundo */
+  text-align: center; /* Centraliza o texto */
+}
+
+.contact h2 {
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+.contact-form {
+  display: flex; /* Alinha os itens em linha */
+  flex-direction: column; /* Organiza os itens em coluna */
+  max-width: 600px; /* Largura máxima do formulário */
+  margin: 0 auto; /* Centraliza o formulário */
+  gap: 15px; /* Espaço entre os campos */
+}
+
+.form-input,
+.form-textarea {
+  padding: 10px; /* Espaçamento interno */
+  border: 1px solid #ccc; /* Borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+  width: 100%; /* Largura total */
+  transition: border-color 0.3s; /* Transição suave */
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #c06a6a; /* Cor da borda ao focar */
+  outline: none; /* Remove o contorno padrão */
+}
+
+.btn-primary {
+  background-color: #c06a6a; /* Cor do botão */
+  color: white; /* Cor do texto do botão */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  border: none; /* Remove a borda padrão */
+  border-radius: 5px; /* Bordas arredondadas do botão */
+  cursor: pointer; /* Muda o cursor ao passar o mouse */
+  font-size: 16px; /* Tamanho da fonte do botão */
+  transition: background-color 0.3s; /* Transição suave para a cor */
+}
+
+.btn-primary:hover {
+  background-color: #b05a5a; /* Cor do botão ao passar o mouse */
+}
+
+.map {
+  margin-top: 30px; /* Espaço acima do mapa */
+  max-width: 100%; /* Largura máxima do mapa */
+  height: 300px; /* Altura do mapa */
+  overflow: hidden; /* Oculta o transbordo */
+}
+
+.map iframe {
+  width: 100%; /* Largura total do iframe */
+  height: 100%; /* Altura total do iframe */
+  border: none; /* Remove a borda do iframe */
+}
+
+
+.footer {
+  background-color: #333; /* Cor de fundo do rodapé */
+  color: #fff; /* Cor do texto */
+  padding: 20px 0; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+}
+
+.footer-content {
+  max-width: 1200px; /* Largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+.social-media {
+  margin-top: 10px; /* Espaço acima das redes sociais */
+}
+
+.social-media a {
+  color: #fff; /* Cor do texto dos links */
+  margin: 0 15px; /* Espaço entre os links */
+  text-decoration: none; /* Remove o sublinhado */
+  transition: color 0.3s; /* Transição suave para a cor */
+}
+
+.social-media a:hover {
+  color: #c06a6a; /* Cor ao passar o mouse */
+}
+
+/* Estilo para os ícones (se estiver usando Font Awesome) */
+.social-media i {
+  margin-right: 5px; /* Espaço entre o ícone e o texto */
 }
