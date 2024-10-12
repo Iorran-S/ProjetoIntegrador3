@@ -4,19 +4,22 @@ const servicesData = [
   { 
     name: "Preenchimento de Bigode Chines", 
     description: "Revitalize seu sorriso.",
-    image: "imagens/bigode chines.jpg" // Caminho corrigido
+    image: "imagens/bigode_chines.jpg" // Caminho corrigido
   },
-  { name: "Botox", 
+  { 
+    name: "Botox", 
     description: "Trate rugas e linhas de expressão.",
-    image:  "imagens/botox.jpg"
+    image: "imagens/botox.jpg"
   },
-  { name: "Harmonização Facial",
+  { 
+    name: "Harmonização Facial",
     description: "Harmonize suas curvas.",
-    image:"imagens/harmonização facial.jpg"
+    image: "imagens/harmonização_facial.jpg"
   },
-  { name: "Preenchimento Labial",
+  { 
+    name: "Preenchimento Labial",
     description: "Resultados duradouros.",
-    image: "imagens/preenchimento labial.jpg"
+    image: "imagens/preenchimento_labial.jpg"
   }
 ];
 
@@ -29,18 +32,17 @@ const Services = () => {
           <div 
             className="service-card" 
             key={index}
-            style={{ backgroundImage: `url(${service.backgroundImage})` }} // Aplica a imagem de fundo
+            style={{ 
+              backgroundImage: `url(${service.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
           >
-            {service.image && (
-              <img 
-                src={service.image} 
-                alt={service.name} 
-                className="service-image" 
-              />
-            )}
-            <h3>{service.name}</h3>
-            <p>{service.description}</p>
-            <button className="btn-secondary">Saiba Mais</button>
+            <div className="service-content">
+              <h3>{service.name}</h3>
+              <p>{service.description}</p>
+              <button className="btn-secondary">Saiba Mais</button>
+            </div>
           </div>
         ))}
       </div>

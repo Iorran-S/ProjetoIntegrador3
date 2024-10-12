@@ -1,72 +1,88 @@
 body {
-  font-family: 'Playfair Display', sans-serif;
+  font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #8a7cb9;
+  background-color: #a36aaada;
 }
 
 header {
   display: flex;  
   justify-content: space-between;
-  padding: 50px;
-  background-color: #c9c1e5;  
-  background: rgba(255, 255, 255, 0.5);
-  color: #281e19;  
+  padding: 20px;
+  background-color: #ffffff86;
 }
 
-
 .nav {
-  display: flex; /* Alinha os itens horizontalmente */
+  display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza os itens */
-  background-color: #4a4a4a; /* Cor de fundo da nav */
-  padding: 10px 20px; /* Espaçamento interno */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+  justify-content: center;
+  background-color: #580caff1;
+  padding: 10px 20px;
+  box-shadow: 0 20px 12px rgba(80, 74, 200, 0.2);
+  border-radius: 20px;
+  border-style: outset;
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
 }
 
 .nav ul {
-  display: flex; 
-  list-style-type: none; /* Remove marcadores */
-  padding: 0; /* Remove preenchimento */
-  margin: 0; /* Remove margem */
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav ul li {
-  margin-right: 20px; /* Espaçamento entre os itens da lista */
+  margin-right: 20px;
 }
 
 .nav a {
-  text-decoration: none; /* Remove sublinhado dos links */
-  color: #ffffff; /* Cor do texto */
-  font-weight: bold; /* Texto em negrito */
-  padding: 10px 15px; /* Espaçamento interno nos links */
-  border-radius: 5px; /* Cantos arredondados */
-  transition: background-color 0.3s, color 0.3s; /* Transição suave */
+  position: relative;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Georgia', serif; /* Fonte aplicada nos links */
+  padding: 10px 15px;
+  transition: color 0.3s;
+  height: 50%;
+  display: flex;
+  align-items: center;
 }
 
-/* Efeito ao passar o mouse */
 .nav a:hover {
-  background-color: #6c63ff; /* Cor de fundo ao passar o mouse */
-  color: #ffffff; /* Mantém a cor do texto ao passar o mouse */
+  color: #52488d;
 }
 
-/* Efeito ativo para o link atual */
-.nav a.active {
-  background-color: #6c63ff; /* Cor para o link ativo */
-  color: #ffffff; /* Cor do texto do link ativo */
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 3px;
+  background-color: #b1a3ff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Efeito ao passar o mouse em links */
-.nav a:hover {
-  color: #7862f5; /* Cor do texto ao passar o mouse */
-  text-decoration: underline; /* Sublinhado ao passar o mouse */
+.nav a:hover::after {
+  transform: scaleX(1);
 }
 
+.nav a.active::after {
+  transform: scaleX(1);
+  background-color: #ff33cc;
+}
 
 .hero {
   background: url('../public/imagens/capa.jpg') no-repeat center center/cover;
   color: #fff;
+  font-family: 'Georgia', serif; /* Fonte aplicada na seção hero */
   height: 80vh;
   display: flex;
   justify-content: center;
@@ -75,76 +91,74 @@ header {
 }
 
 .logo {
-  background: url('../public/imagens/logo.jpg') no-repeat center center/cover; /* Mantém a imagem como fundo */
-  width: 100px; /* Define a largura desejada */
-  height: 100px; /* Define a altura desejada */
-  border-radius: 50%; /* Torna a imagem redonda */
+  background: url('../public/imagens/logo.jpg') no-repeat center center/cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-right:0 auto; /* Centraliza horizontalmente */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade (opcional) */
+  margin-right: 0 auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 
 .services {
   padding: 50px;
   text-align: center;
+  background: url('../public/imagens/capa_card.jpg') no-repeat center center/cover;
+  color: #000000;
+  font-family: 'Georgia', serif; /* Fonte aplicada na seção services */
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  border: #000000;
+  margin-top: 100px;
+}
+
+.service-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .service-card {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
   margin: 10px;
   padding: 20px;
-  border: 1px solid #8570a7;
   border-radius: 12px;
   width: 300px;
+  height: 400px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  background-size: cover; /* Cobre todo o card */
-  background-position: center; /* Centraliza a imagem */
-  background-repeat: no-repeat; /* Evita repetição da imagem */
-}
-
-.service-card:hover {
-  transform: scale(1.05);
-}
-
-.service-image {
-  width: 100%;
-  height: auto; 
-  border-radius: 8px;
-  margin-bottom: 15px;
-  z-index: 1; /* Mantém a imagem na frente da imagem de fundo */
+  background-blend-mode: overlay;
+  font-family: 'Georgia', serif; /* Fonte aplicada nos cards */
 }
 
 .service-card h3, .service-card p {
-  position: relative;
-  z-index: 2; /* Mantém o texto na frente da imagem de fundo */
+  margin: 0;
+  padding: 5px 0;
 }
 
 .btn-secondary {
-  background-color: #8570a7;
-  color: white;
+  margin-top: 10px;
+  background-color: #ffffff;
+  color: #580caff1;
   border: none;
-  padding: 10px 20px;
-  cursor: pointer;
   border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
   transition: background-color 0.3s;
-  z-index: 2; /* Mantém o botão na frente */
 }
 
 .btn-secondary:hover {
-  background-color: #6e598a;
-}
-
-.service-image {
-  width: 100%; 
-  height: auto; 
-  border-radius: 10px; 
-  margin-bottom: 15px; 
+  background-color: #63c1ff;
+  color: #ffffff;
 }
 
 footer {
@@ -152,27 +166,23 @@ footer {
   color: #fff;
   padding: 20px;
   text-align: center;
+  font-family: 'Georgia', serif; /* Fonte aplicada no rodapé */
 }
 
 button {
   padding: 10px 20px;
-  background-color: #8570a7; /* Cor de fundo dos botões */
-  color: white; /* Cor do texto */
-  border: none; /* Remove borda */
-  border-radius: 5px; /* Cantos arredondados */
-  cursor: pointer; /* Muda o cursor ao passar por cima */
-  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+  background-color: #8570a7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  font-family: 'Georgia', serif; /* Fonte aplicada nos botões */
 }
 
 button:hover {
-  background-color: #6e598a; /* Cor de fundo ao passar o mouse */
-  transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
-}
-
-.map {
-  width: 600px;
-  height: 450px;
-  border: 0;
+  background-color: #6e598a;
+  transform: scale(1.05);
 }
 
 .contact-form {
@@ -181,28 +191,29 @@ button:hover {
   gap: 15px;
   max-width: 500px;
   margin: 0 auto;
+  font-family: 'Georgia', serif; /* Fonte aplicada no formulário */
 }
 
-.contact-form input, 
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+.btn-secondary:hover {
+  background-color: #6e598a;
 }
 
-.contact-form button {
-  padding: 10px 20px;
-  background-color: #8570a7;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-  background-color: #6b5591;
+.btn-agendar {
+  position: fixed; /* Fixa o botão na posição da tela */
+  bottom: 6%; /* Distância do topo */
+  right: 6%; /* Distância da direita */
+  width: 120px; /* Largura fixa para garantir o formato redondo */
+  height: 120px; /* Altura igual à largura para formar um círculo */
+  background-color: #ff00c8; /* Cor de fundo */
+  background-size: cover; /* Ajusta a imagem para cobrir todo o botão */
+  background-position: center; /* Centraliza a imagem de fundo */
+  background-repeat: no-repeat; /* Evita que a imagem se repita */
+  color: #ffffff; /* Cor do texto */
+  font-weight: bold; /* Texto em negrito */
+  border-style: dotted;
+  border-radius: 50%; /* Faz o botão ficar redondo */ 
+  z-index: 1; /* Garante que o botão fique à frente de outros elementos */
+  display: flex; /* Centraliza o conteúdo do botão (caso haja) */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;
 }
