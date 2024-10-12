@@ -8,6 +8,7 @@ const HeroSection = () => {
         <p>Tratamentos Estéticos Personalizados para Você</p>
         <button className="btn-primary">Conheça Nossos Serviços</button>
       </div>
+        <button className="btn-agendar">Agendar Consulta</button>
     </section>
   );
 };

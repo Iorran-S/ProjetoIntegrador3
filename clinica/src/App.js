@@ -10,16 +10,17 @@ import '../src/index.css';
 
 const App = () => {
   return (
-    <div>
+    <div className="container">
       <Header />
-      <HeroSection />
-      <Services />
-      <AboutUs />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <HeroSection className="section" />
+      <Services className="section" />
+      <AboutUs className="section" />
+      <Testimonials className="section" />
+      <Contact className="section" />
+      <Footer className="section" />
     </div>
   );
 };
 
 export default App;
+

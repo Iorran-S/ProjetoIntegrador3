@@ -1,86 +1,111 @@
+/*--Global Styles--*/
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+/*--Button Styles--*/
+.btn-slice {
+  padding: 1.2rem 2.5rem;
+  border: 2px solid #000000;
+  border-radius: 0rem;
+  color: #000000;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  position: relative;
+  display: flex; /* Mantido para flexbox */
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+  margin-right: 20px; /* Adiciona espaço entre os botões */
+  overflow: hidden; /* Para garantir que o conteúdo não transborde */
+  flex: 1; /* Permite que os botões cresçam */
+  min-width: 120px; /* Largura mínima para botões */
+}
+
+/* Alteração nas classes .top e .bottom */
+.btn-slice .top,
+.btn-slice .bottom {
+  position: relative;
+  height: 6px;
+  overflow: hidden;
+  transition: top 0.3s cubic-bezier(1.000, -0.055, 0.025, 1.040);
+}
+
+/* Movimentação em hover */
+.btn-slice:hover .top {
+  top: -5px;
+}
+
+.btn-slice:hover .bottom {
+  bottom: -5px;
+}
+
 body {
   font-family: 'Georgia', serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #a36aaada;
+  background-color: #b68f268c;
 }
 
 header {
-  display: flex;  
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #ffffff86;
+  display: flex;
+  justify-content: center; /* Centraliza a nav horizontalmente */
+  padding: 20px; /* Ajuste o padding conforme necessário */
+  background: url('../public/imagens/bg.png');
+  width: 100%; /* Para garantir que o header ocupe toda a largura */
 }
 
 .nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #580caff1;
-  padding: 10px 20px;
-  box-shadow: 0 20px 12px rgba(80, 74, 200, 0.2);
-  border-radius: 20px;
-  border-style: outset;
-  position: fixed;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: auto;
+  justify-content: center; /* Centraliza os itens dentro da nav */
+  position: relative;
+  width: auto; /* Altere para auto para que a largura da nav se ajuste ao conteúdo */
+  padding: 0px; /* Adiciona padding lateral se necessário */
+  z-index: 20; /* Z-index maior para a nav */
 }
+
 
 .nav ul {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  list-style: none; /* Remove os marcadores da lista */
+  padding: 0;      /* Remove o padding padrão */
+  display: flex;    /* Exibe os itens em linha */
+  gap: 20px;        /* Espaçamento entre os botões */
+  align-items: center; /* Centraliza os itens verticalmente */
 }
 
-.nav ul li {
-  margin-right: 20px;
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .btn-slice {
+    margin-right: 10px; /* Reduz o espaço entre os botões em telas menores */
+    font-size: 0.5625rem; /* Ajusta o tamanho da fonte */
+    padding: 0.8rem 2rem; /* Reduz o padding */
+  }
+
+  .nav {
+    flex-direction: column; /* Coloca os itens em coluna */
+    align-items: center; /* Centraliza os itens */
+  }
+
+  .nav ul {
+    flex-direction: column; /* Exibe os itens da navegação em coluna */
+    gap: 10px; /* Reduz o espaçamento entre os itens */
+  }
 }
 
-.nav a {
-  position: relative;
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Georgia', serif; /* Fonte aplicada nos links */
-  padding: 10px 15px;
-  transition: color 0.3s;
-  height: 50%;
-  display: flex;
-  align-items: center;
-}
+@media (max-width: 480px) {
+  body {
+    background-color: #b68f268c; /* Ajuste a cor de fundo para telas menores, se necessário */
+  }
 
-.nav a:hover {
-  color: #52488d;
-}
-
-.nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -5px;
-  height: 3px;
-  background-color: #b1a3ff;
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.nav a:hover::after {
-  transform: scaleX(1);
-}
-
-.nav a.active::after {
-  transform: scaleX(1);
-  background-color: #ff33cc;
+  .btn-slice {
+    font-size: 0.5rem; /* Tamanho da fonte ainda menor para telas pequenas */
+    padding: 0.6rem 1.5rem; /* Ajusta o padding dos botões */
+  }
 }
 
 .hero {
-  background: url('../public/imagens/capa.jpg') no-repeat center center/cover;
+  background: url('../public/imagens/capa_1.jpg') no-repeat center center/cover;
   color: #fff;
   font-family: 'Georgia', serif; /* Fonte aplicada na seção hero */
   height: 80vh;
@@ -96,10 +121,11 @@ header {
   height: 100px;
   border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  margin-right: 0 auto;
+  justify-content: center;
+  position: absolute; /* Altera para absolute para posicionar em relação ao header */
+  top: 20px; /* Ajuste a distância do topo se necessário */
+  left: 20px; /* Ajusta a distância da esquerda */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -136,7 +162,6 @@ header {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-  background-blend-mode: overlay;
   font-family: 'Georgia', serif; /* Fonte aplicada nos cards */
 }
 
@@ -210,10 +235,15 @@ button:hover {
   background-repeat: no-repeat; /* Evita que a imagem se repita */
   color: #ffffff; /* Cor do texto */
   font-weight: bold; /* Texto em negrito */
-  border-style: dotted;
+  border-style:ridge;
   border-radius: 50%; /* Faz o botão ficar redondo */ 
   z-index: 1; /* Garante que o botão fique à frente de outros elementos */
   display: flex; /* Centraliza o conteúdo do botão (caso haja) */
   justify-content: center; /* Centraliza horizontalmente */
   align-items: center;
 }
+.btn-agendar:hover{
+  color: #000000;
+  background-color: #00ff80;
+}
+
