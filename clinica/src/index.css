@@ -16,26 +16,51 @@ header {
 }
 
 
+.nav {
+  display: flex; /* Alinha os itens horizontalmente */
+  align-items: center;
+  justify-content: center; /* Centraliza os itens */
+  background-color: #4a4a4a; /* Cor de fundo da nav */
+  padding: 10px 20px; /* Espaçamento interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade */
+}
+
 .nav ul {
   display: flex; 
-  list-style-type: none; 
-  padding: 0;
-  margin: 0;
+  list-style-type: none; /* Remove marcadores */
+  padding: 0; /* Remove preenchimento */
+  margin: 0; /* Remove margem */
 }
 
 .nav ul li {
-  margin-right: 20px; 
+  margin-right: 20px; /* Espaçamento entre os itens da lista */
 }
 
 .nav a {
-  text-decoration: none; 
-  color: #f364c3; 
-  font-weight: bold;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: #ffffff; /* Cor do texto */
+  font-weight: bold; /* Texto em negrito */
+  padding: 10px 15px; /* Espaçamento interno nos links */
+  border-radius: 5px; /* Cantos arredondados */
+  transition: background-color 0.3s, color 0.3s; /* Transição suave */
 }
 
+/* Efeito ao passar o mouse */
 .nav a:hover {
-  color: #7862f5;
-  text-decoration: underline;
+  background-color: #6c63ff; /* Cor de fundo ao passar o mouse */
+  color: #ffffff; /* Mantém a cor do texto ao passar o mouse */
+}
+
+/* Efeito ativo para o link atual */
+.nav a.active {
+  background-color: #6c63ff; /* Cor para o link ativo */
+  color: #ffffff; /* Cor do texto do link ativo */
+}
+
+/* Efeito ao passar o mouse em links */
+.nav a:hover {
+  color: #7862f5; /* Cor do texto ao passar o mouse */
+  text-decoration: underline; /* Sublinhado ao passar o mouse */
 }
 
 
@@ -49,19 +74,70 @@ header {
   text-align: center;
 }
 
+.logo {
+  background: url('../public/imagens/logo.jpg') no-repeat center center/cover; /* Mantém a imagem como fundo */
+  width: 100px; /* Define a largura desejada */
+  height: 100px; /* Define a altura desejada */
+  border-radius: 50%; /* Torna a imagem redonda */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right:0 auto; /* Centraliza horizontalmente */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para profundidade (opcional) */
+}
+
+
 .services {
   padding: 50px;
   text-align: center;
 }
-
 
 .service-card {
   display: inline-block;
   margin: 10px;
   padding: 20px;
   border: 1px solid #8570a7;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+  transition: transform 0.2s;
+  background-size: cover; /* Cobre todo o card */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-image {
+  width: 100%;
+  height: auto; 
+  border-radius: 8px;
+  margin-bottom: 15px;
+  z-index: 1; /* Mantém a imagem na frente da imagem de fundo */
+}
+
+.service-card h3, .service-card p {
+  position: relative;
+  z-index: 2; /* Mantém o texto na frente da imagem de fundo */
+}
+
+.btn-secondary {
+  background-color: #8570a7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
   border-radius: 5px;
-  width: 200px;
+  transition: background-color 0.3s;
+  z-index: 2; /* Mantém o botão na frente */
+}
+
+.btn-secondary:hover {
+  background-color: #6e598a;
 }
 
 .service-image {
@@ -70,7 +146,6 @@ header {
   border-radius: 10px; 
   margin-bottom: 15px; 
 }
-
 
 footer {
   background-color: #333;
@@ -81,9 +156,53 @@ footer {
 
 button {
   padding: 10px 20px;
-  background-color: #e0c4df;
-  color: white;
+  background-color: #8570a7; /* Cor de fundo dos botões */
+  color: white; /* Cor do texto */
+  border: none; /* Remove borda */
+  border-radius: 5px; /* Cantos arredondados */
+  cursor: pointer; /* Muda o cursor ao passar por cima */
+  transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+}
+
+button:hover {
+  background-color: #6e598a; /* Cor de fundo ao passar o mouse */
+  transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+.map {
+  width: 600px;
+  height: 450px;
+  border: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form input, 
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #8570a7;
+  color: #fff;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #6b5591;
 }

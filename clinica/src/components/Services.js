@@ -2,21 +2,21 @@ import React from 'react';
 
 const servicesData = [
   { 
-    name: "Limpeza de Pele", 
-    description: "Revitalize sua pele.",
-    image: "imagens/limpeza de pele.jpg" // Caminho corrigido
+    name: "Preenchimento de Bigode Chines", 
+    description: "Revitalize seu sorriso.",
+    image: "imagens/bigode chines.jpg" // Caminho corrigido
   },
   { name: "Botox", 
     description: "Trate rugas e linhas de expressão.",
     image:  "imagens/botox.jpg"
   },
-  { name: "Massagem Modeladora",
-    description: "Tonifique o seu corpo.",
-    image:"imagens/massagem_model1.jpg"
+  { name: "Harmonização Facial",
+    description: "Harmonize suas curvas.",
+    image:"imagens/harmonização facial.jpg"
   },
-  { name: "Depilação a Laser",
+  { name: "Preenchimento Labial",
     description: "Resultados duradouros.",
-    image: "imagens/depila_laser.jpg"
+    image: "imagens/preenchimento labial.jpg"
   }
 ];
 
@@ -26,8 +26,11 @@ const Services = () => {
       <h2>Nossos Serviços</h2>
       <div className="service-cards">
         {servicesData.map((service, index) => (
-          <div className="service-card" key={index}>
-            {/* Adicionando a imagem */}
+          <div 
+            className="service-card" 
+            key={index}
+            style={{ backgroundImage: `url(${service.backgroundImage})` }} // Aplica a imagem de fundo
+          >
             {service.image && (
               <img 
                 src={service.image} 

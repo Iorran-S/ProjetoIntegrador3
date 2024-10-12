@@ -6,7 +6,7 @@ const Testimonials = () => {
       <h2>Depoimentos</h2>
       <div className="testimonial-carousel">
         <p>"Serviço excelente, me senti renovada!"</p>
-        <p>"Os tratamentos são de primeira classe, recomendo a todos."</p>
+        <p>"Os tratamentos são de primeira classe, recomendo a todos!"</p>
       </div>
     </section>
   );
