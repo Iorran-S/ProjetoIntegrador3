@@ -48,8 +48,8 @@ body {
 
 header {
   display: flex;
-  justify-content: center; /* Centraliza a nav horizontalmente */
-  padding: 20px; /* Ajuste o padding conforme necessário */
+  justify-content: center; /* Centraliza a nav horizontalmente */ 
+  padding-bottom: 2%;
   background: url('../public/imagens/bg.png');
   width: 100%; /* Para garantir que o header ocupe toda a largura */
 }
@@ -60,7 +60,7 @@ header {
   justify-content: center; /* Centraliza os itens dentro da nav */
   position: relative;
   width: auto; /* Altere para auto para que a largura da nav se ajuste ao conteúdo */
-  padding: 0px; /* Adiciona padding lateral se necessário */
+  padding-top: 1%;
   z-index: 20; /* Z-index maior para a nav */
 }
 
@@ -105,15 +105,95 @@ header {
 }
 
 .hero {
-  background: url('../public/imagens/capa_1.jpg') no-repeat center center/cover;
-  color: #fff;
+  background: url('../public/imagens/capa.jpg') no-repeat center center/cover;
+  color: #000000;
   font-family: 'Georgia', serif; /* Fonte aplicada na seção hero */
   height: 80vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Alinha os filhos nas extremidades */
   align-items: center;
   text-align: center;
+  padding: 0 20px; /* Adiciona um espaçamento lateral */
 }
+
+.hero-content {
+  font-family: 'Georgia', serif;
+  display: flex; /* Define que será um flex container */
+  flex-direction: column; /* Empilha verticalmente */
+  align-items: center; /* Centraliza horizontalmente os itens dentro */
+  text-align: center; /* Centraliza o texto */
+  background: rgba(255, 255, 255, 0.8); /* Fundo do card */
+  padding: 2%;
+  border-radius: 5%;
+  margin-left: 10%;
+}
+
+.btn-slice2 {
+  padding: 1.2rem 2.5rem;
+  border: 2px solid #000000;
+  border-radius: 0rem;
+  color: #000000;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  position: relative;
+  display: flex;
+  background-color: #ffffff;
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+  overflow: hidden; /* Para garantir que o conteúdo não transborde */
+  flex: 1; /* Permite que os botões cresçam */
+  min-width: 120px; /* Largura mínima para botões */
+  margin-top: 1rem; /* Adiciona um espaçamento acima do botão */
+}
+.btn-slice2:hover {
+  padding: 1.2rem 2.5rem;
+  border: 2px solid #000000;
+  border-radius: 0rem;
+  color: #000000;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  position: relative;
+  display: flex;
+  background-color: #bb46caa2;
+  align-items: center; /* Centraliza verticalmente o texto */
+  justify-content: center; /* Centraliza horizontalmente o texto */
+  overflow: hidden; /* Para garantir que o conteúdo não transborde */
+  flex: 1; /* Permite que os botões cresçam */
+  min-width: 120px; /* Largura mínima para botões */
+  margin-top: 1rem; /* Adiciona um espaçamento acima do botão */
+}
+
+.market {
+  margin-top: 20px; /* Espaçamento acima do card */
+  display: flex; /* Permite o uso de flexbox para alinhar o conteúdo */
+  justify-content: flex-start; /* Centraliza o card horizontalmente */
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8); /* Fundo do card */
+  color: #333; /* Cor do texto do card */
+  padding: 10px; /* Ajusta o padding para manter o conteúdo mais alinhado */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra do card */
+  max-width: 300px; /* Largura máxima do card */
+  width: 100%; /* Garante que o card ocupe toda a largura disponível */
+  position: relative; /* Permite o posicionamento da imagem */
+  overflow: hidden; /* Para garantir que a imagem não transborde */
+  display: flex; /* Utiliza flexbox para alinhar os elementos internos */
+  justify-content: center; /* Centraliza a imagem dentro do card */
+  align-items: center; /* Centraliza verticalmente o conteúdo */
+}
+
+.card-image {
+  width: 100%; /* A imagem ocupa toda a largura do card */
+  height: auto; /* A altura é ajustada automaticamente */
+  border-radius: 8px; /* Bordas arredondadas na imagem */
+  object-fit: cover; /* Faz com que a imagem cubra o espaço do card */
+  min-height: 200px; /* Define uma altura mínima para manter o tamanho uniforme */
+}
+
 
 .logo {
   background: url('../public/imagens/logo.jpg') no-repeat center center/cover;
@@ -135,13 +215,13 @@ header {
   background: url('../public/imagens/capa_card.jpg') no-repeat center center/cover;
   color: #000000;
   font-family: 'Georgia', serif; /* Fonte aplicada na seção services */
-  height: 80vh;
   justify-content: center;
   align-items: center;
   border: #000000;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
+/* Estilo dos Cartões de Serviço */
 .service-cards {
   display: flex;
   justify-content: center;
@@ -151,9 +231,9 @@ header {
 .service-card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  color: #ffffff;
+  justify-content: space-between; /* Garante que o conteúdo e o botão fiquem distribuídos */
   background-color: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
   margin: 10px;
   padding: 20px;
   border-radius: 12px;
@@ -168,6 +248,121 @@ header {
 .service-card h3, .service-card p {
   margin: 0;
   padding: 5px 0;
+  background-color: #6e598a8c;
+}
+
+.service-content {
+  flex-grow: 1; /* Faz o conteúdo ocupar o espaço disponível */
+  display: flex;
+  flex-direction: column;
+  justify-content: end; /* Centraliza verticalmente o texto dentro do conteúdo */
+}
+
+.btn-slice3 {
+  border: 2px solid #000000;
+  border-radius: 0rem;
+  color: #000000;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  padding: 0.8rem 1.5rem;
+  margin-top: 10px; /* Espaçamento acima do botão */
+  align-self: center; /* Centraliza o botão horizontalmente */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-slice3:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Adiciona um espaço entre os botões */
+  margin-top: 20px; /* Espaçamento entre os slides e os botões de navegação */
+}
+
+.cta {
+  display: flex;
+  padding: 10px 45px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px; /* Tamanho do texto reduzido para caber melhor */
+  color: white;
+  background: #b97816;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+}
+
+.cta:focus {
+   outline: none; 
+}
+
+.cta:hover {
+    transition: 0.5s;
+    box-shadow: 10px 10px 0 #ffffff;
+}
+
+.cta span {
+    transform: skewX(15deg);
+}
+
+
+
+/* SVG animations */
+path.one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+}
+
+path.two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+}
+
+.cta:hover path.three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover path.one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover path.two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+/* Animação de cor */
+@keyframes color_anim {
+    0% {
+        fill: white;
+    }
+    50% {
+        fill: #FBC638;
+    }
+    100% {
+        fill: white;
+    }
+}
+
+/* Estilos dos botões de navegação */
+.btn-prev, .btn-next {
+  background-color: #007bff; /* Cor de fundo do botão */
+  color: white; /* Cor do texto */
+  border: none; /* Remove borda */
+  padding: 10px 15px; /* Espaçamento interno */
+  cursor: pointer; /* Muda o cursor para mão */
+  border-radius: 5px; /* Arredonda os cantos do botão */
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background-color: #0056b3; /* Cor do botão ao passar o mouse */
 }
 
 .btn-secondary {
@@ -224,26 +419,79 @@ button:hover {
 }
 
 .btn-agendar {
-  position: fixed; /* Fixa o botão na posição da tela */
-  bottom: 6%; /* Distância do topo */
-  right: 6%; /* Distância da direita */
-  width: 120px; /* Largura fixa para garantir o formato redondo */
-  height: 120px; /* Altura igual à largura para formar um círculo */
-  background-color: #ff00c8; /* Cor de fundo */
-  background-size: cover; /* Ajusta a imagem para cobrir todo o botão */
-  background-position: center; /* Centraliza a imagem de fundo */
-  background-repeat: no-repeat; /* Evita que a imagem se repita */
-  color: #ffffff; /* Cor do texto */
-  font-weight: bold; /* Texto em negrito */
-  border-style:ridge;
-  border-radius: 50%; /* Faz o botão ficar redondo */ 
-  z-index: 1; /* Garante que o botão fique à frente de outros elementos */
-  display: flex; /* Centraliza o conteúdo do botão (caso haja) */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center;
+    border: 2px solid #000000;
+    border-radius: 0rem;
+    color: #000000;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    background-color: #ffffff;
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    margin-top: 10px; /* Espaçamento acima do botão */
+    align-self: center; /* Centraliza o botão horizontalmente */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.btn-agendar:hover{
-  color: #000000;
-  background-color: #00ff80;
+  
+  .btn-slice3:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
+.about-us {
+  padding: 40px;
+  background-color: #fdf3f3; /* Um tom rosa claro */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra mais suave */
+}
+
+.about-us h2 {
+  color: #d58b8b; /* Cor rosa mais delicada para o título */
+}
+
+.about-us p, .about-us h3, .about-us blockquote {
+  color: #755858; /* Um tom de marrom suave */
+}
+
+.about-us blockquote {
+  border-left: 4px solid #d58b8b; /* Alinhado com a cor do título */
+}
+
+.about-us img {
+  max-width: 100%; /* Responsividade da imagem */
+  height: auto; /* Altura automática para manter proporção */
+  border-radius: 8px; /* Bordas arredondadas na imagem */
+  display: block; /* Remove espaço em branco abaixo da imagem */
+  margin: 20px auto; /* Centraliza a imagem */
+}
+
+.about-us ul {
+  list-style-type: disc; /* Tipo de marcador */
+  padding-left: 20px; /* Espaço à esquerda */
+}
+
+.about-us blockquote {
+  border-left: 4px solid #ccc; /* Borda à esquerda do depoimento */
+  padding-left: 20px; /* Espaço interno */
+  color: #444; /* Cor do texto do depoimento */
+  font-style: italic; /* Estilo itálico para o depoimento */
+  margin: 20px 0; /* Espaço acima e abaixo do depoimento */
+}
+
+.team-members {
+  display: flex; /* Exibe membros em linha */
+  justify-content: space-around; /* Espaçamento igual entre os membros */
+  flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
+
+.member {
+  max-width: 200px; /* Largura máxima dos membros */
+  text-align: center; /* Centraliza o texto dos membros */
+  margin: 20px; /* Espaço ao redor de cada membro */
+}
+
+.member img {
+  max-width: 100%; /* Responsividade da imagem do membro */
+  border-radius: 50%; /* Imagem em forma de círculo */
+  margin-bottom: 10px; /* Espaço abaixo da imagem */
+}
