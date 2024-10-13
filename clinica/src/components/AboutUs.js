@@ -29,7 +29,7 @@ const AboutUs = () => {
         <p>Especialização: Enfermagem e Estética Avançada</p>
         <p>
         <blockquote>
-          Com mais de 14 anos de experiência, na área de saúde Dra. Maria é referência em tratamentos faciais e rejuvenescimento, trazendo sempre as últimas novidades do mercado para a clínica.
+          Com mais de 14 anos de experiência, na área de saúde Dra. Martins é referência em tratamentos faciais e rejuvenescimento, trazendo sempre as últimas novidades do mercado para a clínica.
         </blockquote>
         </p>
       </div>
