@@ -58,8 +58,8 @@ body {
 header {
   display: flex;
   justify-content: center; /* Centraliza a nav horizontalmente */ 
-  padding-bottom: 2%;
-  background: url('../public/imagens/bg.png');
+  padding-bottom: 4%;
+  background: url('../public/imagens/bg.jpg');
   width: 100%; /* Para garantir que o header ocupe toda a largura */
 }
 
@@ -69,7 +69,7 @@ header {
   justify-content: center; /* Centraliza os itens dentro da nav */
   position: relative;
   width: auto; /* Altere para auto para que a largura da nav se ajuste ao conteúdo */
-  padding-top: 1%;
+  padding-top: 3%;
   z-index: 20; /* Z-index maior para a nav */
 }
 
@@ -114,6 +114,7 @@ header {
 }
 
 .hero {
+  margin-top: 5px;
   background: url('../public/imagens/capa.jpg') no-repeat center center/cover;
   color: #000000;
   font-family: 'Georgia', serif; /* Fonte aplicada na seção hero */
@@ -206,8 +207,8 @@ header {
 
 .logo {
   background: url('../public/imagens/logo.jpg') no-repeat center center/cover;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -227,7 +228,7 @@ header {
   justify-content: center;
   align-items: center;
   border: #000000;
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 /* Estilo dos Cartões de Serviço */
@@ -501,6 +502,12 @@ button:hover {
   display: flex; /* Exibe membros em linha */
   justify-content:center; /* Espaçamento igual entre os membros */
   flex-wrap: wrap; /* Permite quebra de linha se necessário */
+  background-color: #ffffff63;
+  border-style:double;
+  border-color: #ffffff;
+  border-radius: 6%;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .member {
@@ -521,7 +528,6 @@ button:hover {
   background-color: #ffffffc4; /* Cor de fundo suave */
   color: #fff; /* Cor do texto */
   padding: 10px 20px;
-  border-radius: 20px; /* Bordas arredondadas para um estilo delicado */
   text-decoration: none; /* Remove sublinhado */
   transition: background-color 0.3s ease;
 }
@@ -550,6 +556,7 @@ button:hover {
   padding: 40px 20px; /* Espaçamento do contêiner */
   background-color: #f9f9f9; /* Cor de fundo */
   text-align: center; /* Centraliza o texto */
+  background: url('../public/imagens/clientes.jpg') no-repeat center center/cover;
 }
 
 .testimonials h3 {
