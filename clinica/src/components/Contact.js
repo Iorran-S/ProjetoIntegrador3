@@ -1,6 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    mensagem: ''
+  });
+
+  const handlechange = (e) => {
+    const {name, value } = e.target;
+    setFormData({...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/contact', formData)
+    .then(response => {
+      console.log('Contato Salvo', response.data);
+  })
+  .catch(error => {
+    console.error('Erro ao salvar contato', error);
+  });
+};
+
   return (
     <section id="contact" className="contact">
       <h2>Agende sua Consulta!</h2>

@@ -449,6 +449,7 @@ button:hover {
   background-color: #e07e0e;
 }
 
+/*<<<<<<< Updated upstream*/
 .about-us {
   padding: 40px;
   background-color: #fdf3f3; /* Um tom rosa claro */
@@ -701,3 +702,6 @@ blockquote footer {
 .social-media i {
   margin-right: 5px; /* Espaço entre o ícone e o texto */
 }
+/*=======*/
+
+/*>>>>>>> Stashed changes*/

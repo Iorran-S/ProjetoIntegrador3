@@ -8,6 +8,7 @@ import Contact from '../src/components/Contact';
 import Footer from '../src/components/Footer';
 import '../src/index.css';
 
+
 const App = () => {
   return (
     <div className="container">
