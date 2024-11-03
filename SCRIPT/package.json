@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Stanleykenneth/Projeto-Integrador-2#readme",
   "dependencies": {
-    "express": "^4.21.0"
+    "axios": "^1.7.7",
+    "express": "^4.21.0",
+    "swiper": "^11.1.14"
   }
 }
