@@ -6,28 +6,27 @@ CREATE TABLE SERVICOS
 (
 	id INT AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
-    duracao INT NOT NULL, -- em minutos
     preco DECIMAL(10,2) NOT NULL,
     PRIMARY KEY (id)
 
 );
 
-CREATE TABLE FUNCIONARIOS
-(
-	id INT AUTO_INCREMENT,
+CREATE TABLE FUNCIONARIOS (
+    id INT AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    funcao VARCHAR(255) NOT NULL, 
-    primary key (id)
+    login VARCHAR(100) NOT NULL UNIQUE,  -- Login único para cada funcionário
+    senha_hash VARCHAR(255) NOT NULL,    -- Armazena a senha criptografada
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE CLIENTES
 (
-	id INT AUTO_INCREMENT,
+    id INT AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     fone VARCHAR(255) NOT NULL,
-    cpf VARCHAR(11) NOT NULL,
+    mensagem TEXT NOT NULL,
     primary key(id)
 );
 
@@ -45,3 +44,13 @@ CREATE TABLE AGENDAMENTOS (
     FOREIGN KEY (cliente_id) REFERENCES CLIENTES(id),
     FOREIGN KEY (servico_id) REFERENCES SERVICOS(id)
 );
+
+CREATE VIEW RESUMO_SERVICOS AS
+SELECT 
+    nome AS 'Procedimento',
+    MIN(preco) AS 'Menor Preço',
+    MAX(preco) AS 'Maior Preço',
+    AVG(preco) AS 'Média de Preços',
+    COUNT(id) AS 'Total de Serviços'
+FROM SERVICOS
+GROUP BY nome;

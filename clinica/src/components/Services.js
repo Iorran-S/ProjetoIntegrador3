@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Importa os estilos do Swiper
 
+const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
+
 const servicesData = [
   { 
     name: "Microagulhamento", 
@@ -77,24 +79,18 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="services">
-      <h2>Nossos Serviços</h2>
-      <Swiper
-        ref={swiperRef} // Adiciona a referência ao Swiper
-        spaceBetween={20}
-        slidesPerView={1} // Número de slides visíveis em telas pequenas
-        breakpoints={{
-          640: {
-            slidesPerView: 2, // Número de slides visíveis em telas médias
-          },
-          768: {
-            slidesPerView: 3, // Número de slides visíveis em telas grandes
-          },
-          1024: {
-            slidesPerView: 4, // Número de slides visíveis em telas extra grandes
-          },
-        }}
-      >
+  <section id="services" className="services">
+    <h2>Nossos Serviços</h2>
+    <Swiper
+      ref={swiperRef}
+      spaceBetween={20}
+      slidesPerView={1}
+      breakpoints={{
+        640: { slidesPerView: 2 },
+        768: { slidesPerView: 3 },
+        1024: { slidesPerView: 4 },
+      }}
+    >
       {servicesData.map((service, index) => (
         <SwiperSlide key={index}>
           <div 
@@ -109,7 +105,14 @@ const Services = () => {
               <h3>{service.name}</h3>
               <p>{service.description}</p>
             </div>
-            <button className="btn-slice3">Saiba Mais</button>
+            <a 
+              href={`https://wa.me/${phoneNumber}?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20procedimento:%20*${encodeURIComponent(service.name)}*.%20Poderia%20me%20informar%20valores%20e%20disponibilidade?`}
+              className="btn-slice3"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Agende Já
+            </a>
           </div>
         </SwiperSlide>
       ))}

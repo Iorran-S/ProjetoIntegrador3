@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+
+const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,66 +10,72 @@ const Contact = () => {
     mensagem: ''
   });
 
-  const handlechange = (e) => {
-    const {name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/contact', formData)
-    .then(response => {
-      console.log('Contato Salvo', response.data);
-      alert('Agendamento efetuado com sucesso!');
-  })
-  .catch(error => {
-    console.error('Erro ao salvar contato', error);
-    alert('Erro ao enviar o agendamento!')
-  });
-};
+    
+    // Formata a mensagem para o WhatsApp
+    const whatsappMessage = `Olá! Gostaria de agendar uma consulta.\n\n*Nome:* ${formData.nome}\n*Email:* ${formData.email}\n*Telefone:* ${formData.telefone}\n\n*Mensagem:* ${formData.mensagem}`;
+    
+    // Codifica a mensagem para URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Redireciona para o WhatsApp
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+  };
 
   return (
     <section id="contact" className="contact">
       <h2>Agende sua Consulta!</h2>
       <form onSubmit={handleSubmit} className="contact-form">
         <input 
-           type="text"
-           name="nome"
-           placeholder="Nome"
-           required
-           className="form-input"
-           value={formData.nome}
-           onChange={handlechange}
+          type="text"
+          name="nome"
+          placeholder="Nome"
+          required
+          className="form-input"
+          value={formData.nome}
+          onChange={handleChange}
         />
 
         <input 
-           type="email"
-           name="email"
-           placeholder="Email"
-           required
-           className="form-input"
-           value={formData.email}
-           onChange={handlechange}
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          className="form-input"
+          value={formData.email}
+          onChange={handleChange}
         />
            
         <input
-           type="tel"
-           name="telefone"
-           placeholder="Telefone"
-           className="form-input"
-           value={formData.telefone}
-           onChange={handlechange}
+          type="tel"
+          name="telefone"
+          placeholder="Telefone"
+          required
+          className="form-input"
+          value={formData.telefone}
+          onChange={handleChange}
         />
 
         <textarea
-            name="mensagem"
-            placeholder="Mensagem" 
-            required
-            className="form-textarea"
-            value={formData.mensagem}
-            onChange={handlechange}  
+          name="mensagem"
+          placeholder="Mensagem" 
+          required
+          className="form-textarea"
+          value={formData.mensagem}
+          onChange={handleChange}  
         />
-        <button type="submit" className="btn-primary">Enviar</button>
+        
+        <button type="submit" className="btn-slice3">
+          <div className="bottom">
+            <span>Enviar para WhatsApp</span>
+          </div>
+        </button>
       </form>
     </section>
   );
