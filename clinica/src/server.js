@@ -9,62 +9,86 @@ const cors = require('cors');
 
 const app = express();
 
-// Configuração do CORS para produção/desenvolvimento
+// Verificação crítica das variáveis de ambiente
+if (!process.env.DATABASE_URL) {
+  console.error('ERRO: DATABASE_URL não está definida!');
+  process.exit(1);
+}
+
+// Configuração do CORS
 app.use(cors({
   origin: [
-    process.env.FRONTEND_URL, 
+    process.env.FRONTEND_URL || 'http://localhost:3000',
     'http://localhost:3000'
   ],
   credentials: true
 }));
 
-// Conexão PostgreSQL
-const pool = new Pool({
+// Configuração do Pool PostgreSQL com tratamento de erro melhorado
+const poolConfig = {
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false
   }
-});
+};
 
-// Configuração de sessão com PostgreSQL
-app.use(session({
+const pool = new Pool(poolConfig);
+
+// Configuração de sessão otimizada
+const sessionConfig = {
   store: new pgSession({
-    pool: pool,  // Usando a mesma conexão do pool
-    tableName: 'user_sessions'  // Nome da tabela para armazenar sessões
+    pool: pool,
+    tableName: 'user_sessions',
+    createTableIfMissing: true
   }),
-  secret: process.env.SESSION_SECRET || 'fallback_secret',
+  secret: process.env.SESSION_SECRET || 'segredo_temporario',
   resave: false,
   saveUninitialized: false,
-  cookie: { 
+  cookie: {
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none',
-    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 dias
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    maxAge: 30 * 24 * 60 * 60 * 1000
   }
-}));
+};
 
-// Middlewares
+app.use(session(sessionConfig));
+
+// Middlewares essenciais
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'build')));
 
-// Teste de conexão
+// Verificação de conexão robusta
 pool.connect()
   .then(client => {
-    console.log('Conectado ao PostgreSQL com sucesso!');
-    client.release();
+    console.log('✅ Conexão com PostgreSQL estabelecida com sucesso');
+    return client.query('SELECT NOW()')
+      .then(res => {
+        console.log('⏱️ Data/hora do servidor PostgreSQL:', res.rows[0].now);
+        client.release();
+      });
   })
   .catch(err => {
-    console.error('Erro na conexão com PostgreSQL:', err);
+    console.error('❌ Falha na conexão com PostgreSQL:', err);
     process.exit(1);
   });
 
-// Rotas
+// Rotas básicas de saúde
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'healthy',
+    database: pool ? 'connected' : 'disconnected',
+    timestamp: new Date()
+  });
+});
+
+// Suas rotas de aplicação
 app.post('/api/contact', async (req, res) => {
-  // Implementação da rota de contato
+  // Implemente sua lógica aqui
 });
 
 app.post('/api/auth/login', async (req, res) => {
-  // Implementação da rota de login
+  // Implemente sua lógica aqui
 });
 
 // Rota fallback para o React
@@ -72,9 +96,13 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// Inicia o servidor
+// Inicialização do servidor com tratamento de erros
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-  console.log(`Ambiente: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🚀 Servidor rodando na porta ${port}`);
+  console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🔗 Database URL: ${process.env.DATABASE_URL?.split('@')[1] || 'não configurada'}`);
+}).on('error', (err) => {
+  console.error('❌ Falha ao iniciar o servidor:', err);
+  process.exit(1);
 });
