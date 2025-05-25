@@ -22,15 +22,14 @@
     "swiper": "^11.1.14",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "http://localhost:3000",
-  "scripts": {
-    "start": "react-scripts start \"concurrently \"npm run server\" \"npm run client\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon server.js",
-    "client": "cd client && npm start"
-  },
+"scripts": {
+  "start": "node server.js",
+  "build": "react-scripts build",
+  "server": "node server.js",
+  "dev": "concurrently \"npm run server\" \"react-scripts start\"",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
