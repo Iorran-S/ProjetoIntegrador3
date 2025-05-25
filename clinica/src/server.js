@@ -56,7 +56,8 @@ app.use(session(sessionConfig));
 // Middlewares essenciais
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../../build')));
+
 
 // Verificação de conexão robusta
 pool.connect()
@@ -91,9 +92,10 @@ app.post('/api/auth/login', async (req, res) => {
   // Implemente sua lógica aqui
 });
 
-// Rota fallback para o React
+// E na rota fallback:
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../build', 'index.html'));
 });
 
 // Inicialização do servidor com tratamento de erros
