@@ -55,6 +55,6 @@ app.get('*', (req, res) => {
 // Inicia o servidor
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Servidor rodando em ${port}`);
+  console.log(`Servidor rodando em ${port}`);1
   console.log(`Banco: ${process.env.DB_NAME}`);
 });
