@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ onEmployeeAccess, isEmployee }) => {
   const location = useLocation();
   
   // Se estamos na página principal, usa âncoras
@@ -47,6 +47,14 @@ const Header = () => {
             ) : (
               <Link className="btn-slice" to="/#contact">Contato</Link>
             )}
+          </li>
+          <li>
+            <button 
+              onClick={onEmployeeAccess} 
+              className="btn-slice employee-access-btn"
+            >
+              {isEmployee ? 'Relatórios' : 'Acesso Funcionário'}
+            </button>
           </li>
         </ul>
       </nav>
