@@ -1,55 +1,44 @@
-CREATE DATABASE `ESTETICA MARTINS`;
+-- Criação do banco (não necessário no Render, ele já cria)
+-- USE não é necessário no PostgreSQL, você se conecta diretamente ao DB
 
-USE `ESTETICA MARTINS`;
-
-CREATE TABLE SERVICOS
-(
-	id INT AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id)
-
+CREATE TABLE servicos (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  preco DECIMAL(10,2) NOT NULL
 );
 
-CREATE TABLE FUNCIONARIOS (
-    id INT AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    telefone VARCHAR(100) NOT NULL UNIQUE,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+CREATE TABLE funcionarios (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  telefone VARCHAR(100) NOT NULL UNIQUE,
+  data_criacao TIMESTAMPTZ DEFAULT NOW()
 );
 
-CREATE TABLE CLIENTES
-(
-    id INT AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    fone VARCHAR(255) NOT NULL,
-    mensagem TEXT NOT NULL,
-    primary key(id)
+CREATE TABLE clientes (
+  id SERIAL PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  fone VARCHAR(255) NOT NULL,
+  mensagem TEXT NOT NULL
 );
 
-CREATE TABLE AGENDAMENTOS (
-    id INT AUTO_INCREMENT,
-    funcionario_id INT NOT NULL,
-    cliente_id INT NOT NULL,
-    servico_id INT NOT NULL,
-    agendamento_date DATE NOT NULL,
-    abertura_time TIME NOT NULL,
-    final_time TIME NOT NULL,
-    status VARCHAR(255) NOT NULL DEFAULT 'pendente', -- status pode ser: pendente, confirmado, agendado
-    PRIMARY KEY (id),
-    FOREIGN KEY (funcionario_id) REFERENCES FUNCIONARIOS(id),
-    FOREIGN KEY (cliente_id) REFERENCES CLIENTES(id),
-    FOREIGN KEY (servico_id) REFERENCES SERVICOS(id)
+CREATE TABLE agendamentos (
+  id SERIAL PRIMARY KEY,
+  funcionario_id INT NOT NULL REFERENCES funcionarios(id),
+  cliente_id INT NOT NULL REFERENCES clientes(id),
+  servico_id INT NOT NULL REFERENCES servicos(id),
+  agendamento_date DATE NOT NULL,
+  abertura_time TIME NOT NULL,
+  final_time TIME NOT NULL,
+  status VARCHAR(255) NOT NULL DEFAULT 'pendente'
 );
 
-CREATE VIEW RESUMO_SERVICOS AS
+CREATE OR REPLACE VIEW resumo_servicos AS
 SELECT 
-    nome AS 'Procedimento',
-    MIN(preco) AS 'Menor Preço',
-    MAX(preco) AS 'Maior Preço',
-    AVG(preco) AS 'Média de Preços',
-    COUNT(id) AS 'Total de Serviços'
-FROM SERVICOS
+  nome AS procedimento,
+  MIN(preco) AS menor_preco,
+  MAX(preco) AS maior_preco,
+  AVG(preco) AS media_precos,
+  COUNT(id) AS total_servicos
+FROM servicos
 GROUP BY nome;

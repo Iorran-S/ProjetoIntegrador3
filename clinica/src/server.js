@@ -31,15 +31,19 @@ app.use(session({
   }
 }));
 
-// Altere de mysql2 para pg
+// Conexão PostgreSQL
 const { Pool } = require('pg');
-
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false // Obrigatório no Render
   }
 });
+
+// Teste de conexão (opcional)
+pool.query('SELECT NOW()')
+  .then(res => console.log('Conexão com PostgreSQL OK:', res.rows[0]))
+  .catch(err => console.error('Erro na conexão:', err));
 
 
 // Middleware para servir o frontend
