@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const path = require('path');
 const cors = require('cors');
-
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 const app = express();
 
 // Configuração do CORS para produção/desenvolvimento
@@ -17,27 +18,29 @@ app.use(cors({
   credentials: true
 }));
 
-// Configuração de sessão (com PostgreSQL no Render)
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  store: new pgSession({
+    conString: process.env.DATABASE_URL || 'postgres://user:pass@localhost:5432/db'
+  }),
+  secret: process.env.SESSION_SECRET || 'fallback_secret',
   resave: false,
   saveUninitialized: false,
   cookie: { 
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'none',
-    maxAge: 24 * 60 * 60 * 1000
+    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 dias
   }
 }));
 
-// Conexão com MySQL
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME.replace(/\s+/g, '_'), // Remove espaços
-  waitForConnections: true,
-  connectionLimit: 10
+// Altere de mysql2 para pg
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
+
 
 // Middleware para servir o frontend
 app.use(express.static(path.join(__dirname, 'build')));
