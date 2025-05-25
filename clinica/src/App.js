@@ -8,9 +8,6 @@ import AboutUs from './components/AboutUs';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
-import PrivateRoute from './components/PrivateRoute';
 import './index.css';
 
 const Home = () => (
@@ -36,12 +33,7 @@ const App = () => {
                 <Footer />
               </>
             } />
-            
-            <Route path="/admin" element={<AdminLogin />} />
-            
-            <Route element={<PrivateRoute />}>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            </Route>
+            {/* Você pode adicionar outras rotas aqui */}
           </Routes>
         </main>
       </div>

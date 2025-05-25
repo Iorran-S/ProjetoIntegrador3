@@ -5,29 +5,51 @@ import { Link, useLocation } from 'react-router-dom';
 const Header = () => {
   const location = useLocation();
   
-  // Função para determinar o 'to' do Link
-  const getLinkTo = (hash) => {
-    // Se já estiver na página principal, usa apenas o hash
-    if (location.pathname === '/') {
-      return hash;
-    }
-    // Se estiver em outra página, redireciona para a página principal com o hash
-    return `/${hash}`;
-  };
+  // Se estamos na página principal, usa âncoras
+  const isHomePage = location.pathname === '/';
 
   return (
     <header>
       <div className="logo"></div>   
       <nav className="nav"> 
         <ul> 
-          <li><Link className="btn-slice" to={getLinkTo('#home')}>Home</Link></li>
-          <li><Link className="btn-slice" to={getLinkTo('#about')}>Sobre</Link></li>
-          <li><Link className="btn-slice" to={getLinkTo('#services')}>Serviços</Link></li>
-          <li><Link className="btn-slice" to={getLinkTo('#testimonials')}>Depoimentos</Link></li>
-          <li><Link className="btn-slice" to={getLinkTo('#contact')}>Contato</Link></li>
-          <li><Link className="btn-slice" to="/admin" >Área de Funcionários</Link></li>
+          <li>
+            {isHomePage ? (
+              <a className="btn-slice" href="#home">Home</a>
+            ) : (
+              <Link className="btn-slice" to="/#home">Home</Link>
+            )}
+          </li>
+          <li>
+            {isHomePage ? (
+              <a className="btn-slice" href="#about">Sobre</a>
+            ) : (
+              <Link className="btn-slice" to="/#about">Sobre</Link>
+            )}
+          </li>
+          <li>
+            {isHomePage ? (
+              <a className="btn-slice" href="#services">Serviços</a>
+            ) : (
+              <Link className="btn-slice" to="/#services">Serviços</Link>
+            )}
+          </li>
+          <li>
+            {isHomePage ? (
+              <a className="btn-slice" href="#testimonials">Depoimentos</a>
+            ) : (
+              <Link className="btn-slice" to="/#testimonials">Depoimentos</Link>
+            )}
+          </li>
+          <li>
+            {isHomePage ? (
+              <a className="btn-slice" href="#contact">Contato</a>
+            ) : (
+              <Link className="btn-slice" to="/#contact">Contato</Link>
+            )}
+          </li>
         </ul>
-    </nav>
+      </nav>
     </header>
   );
 };

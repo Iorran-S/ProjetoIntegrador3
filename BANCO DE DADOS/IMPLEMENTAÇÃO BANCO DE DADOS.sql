@@ -14,8 +14,7 @@ CREATE TABLE SERVICOS
 CREATE TABLE FUNCIONARIOS (
     id INT AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    login VARCHAR(100) NOT NULL UNIQUE,  -- Login único para cada funcionário
-    senha_hash VARCHAR(255) NOT NULL,    -- Armazena a senha criptografada
+    telefone VARCHAR(100) NOT NULL UNIQUE,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
