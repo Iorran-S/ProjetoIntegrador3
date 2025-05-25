@@ -1,37 +1,41 @@
 {
   "name": "clinica",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
-  },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.7.7",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.3",
+    "connect-pg-simple": "^8.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.4",
+    "pg": "^8.11.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "react-scripts": "5.0.1",
     "swiper": "^11.1.14",
-    "express": "^4.21.2",
-    "pg": "^8.11.3",
+    "web-vitals": "^2.1.4",
     "express-session": "^1.17.3",
-    "connect-pg-simple": "^8.0.0",
-    "bcrypt": "^6.0.0",
-    "jsonwebtoken": "^9.0.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
-    "axios": "^1.7.7"
+    "path": "^0.12.7"
   },
   "scripts": {
     "start": "node src/server.js",
     "build": "react-scripts build",
+    "server": "node src/server.js",
+    "dev": "concurrently \"npm run server\" \"react-scripts start\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "render-setup": "npm install && npm run build",
-    "dev": "concurrently \"npm run server\" \"react-scripts start\"",
-    "server": "node src/server.js"
+    "render-postbuild": "npm run build && mv build ../"
   },
-  "homepage": "./",
+"homepage": "/",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,9 +55,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
